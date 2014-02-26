@@ -490,7 +490,7 @@ static int cpu_power_select(struct cpuidle_device *dev,
 	uint32_t *residency = get_per_cpu_max_residency(dev->cpu);
 
 
-	if (sleep_disabled || sleep_us  < 0)
+	if (sleep_us  < 0)
 		return 0;
 
 	next_event_us = (uint32_t)(ktime_to_us(get_next_event_time(dev->cpu)));
