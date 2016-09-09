@@ -4674,8 +4674,19 @@ static inline void inc_cfs_rq_hmp_stats(struct cfs_rq *cfs_rq,
 static inline void dec_cfs_rq_hmp_stats(struct cfs_rq *cfs_rq,
 	 struct task_struct *p, int change_cra) { }
 
-#define dec_throttled_cfs_rq_hmp_stats(...)
-#define inc_throttled_cfs_rq_hmp_stats(...)
+	/*
+	 * If in_iowait is set, the code below may not trigger any cpufreq
+	 * utilization updates, so do it here explicitly with the IOWAIT flag
+	 * passed.
+	 */
+	if (p->in_iowait)
+		cpufreq_update_this_cpu(rq, SCHED_CPUFREQ_IOWAIT);
+
+	for_each_sched_entity(se) {
+		if (se->on_rq)
+			break;
+		cfs_rq = cfs_rq_of(se);
+		enqueue_entity(cfs_rq, se, flags);
 
 #endif /* CONFIG_SCHED_HMP */
 
