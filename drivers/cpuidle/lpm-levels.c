@@ -159,11 +159,6 @@ void msm_cpuidle_set_sleep_disable(bool disable)
 		pr_info("%s:sleep_disabled=%d\n",__func__,disable);
 }
 
-s32 msm_cpuidle_get_deep_idle_latency(void)
-{
-	return 10;
-}
-
 void lpm_suspend_wake_time(uint64_t wakeup_time)
 {
 	if (wakeup_time <= 0) {
