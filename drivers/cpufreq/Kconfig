@@ -131,6 +131,13 @@ config CPU_FREQ_DEFAULT_GOV_ALUCARD
           It has been known to be battery friendly without sacrificing much performance. If unsure have a look at the help section of the
           driver. Fallback governor will be the performance governor.
 
+config CPU_FREQ_DEFAULT_GOV_DARKNESS
+	bool "darkness"
+	select CPU_FREQ_GOV_DARKNESS
+	help
+	  It's based on nightmare but more simple and fast, basic configs but very complex structure.
+	  It is an updated nightmare gov and improved stability, so far it is quite stable in tests.
+
 config CPU_FREQ_DEFAULT_GOV_SCHED
 	bool "sched"
 	select CPU_FREQ_GOV_INTERACTIVE
@@ -138,6 +145,7 @@ config CPU_FREQ_DEFAULT_GOV_SCHED
 	  Use the CPUfreq governor 'sched' as default. This scales
 	  cpu frequency using CPU utilization estimates from the
 	  scheduler.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -252,6 +260,11 @@ config CPU_FREQ_GOV_ALUCARD
 	  module will be called cpufreq_alucard.
 
 	  For details, take a look at linux/Documentation/cpu-freq.
+
+config CPU_FREQ_GOV_DARKNESS
+	tristate "'darkness' cpufreq governor"
+	depends on CPU_FREQ
+	select CPU_FREQ_GOV_COMMON
 
 config CPU_FREQ_GOV_SCHED
 	bool "'sched' cpufreq governor"
