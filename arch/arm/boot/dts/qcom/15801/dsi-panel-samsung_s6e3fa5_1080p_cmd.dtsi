@@ -103,6 +103,7 @@
 
 		qcom,ulps-enabled;
 		qcom,panel-allow-phy-poweroff;
+		qcom,suspend-ulps-enabled;
 
 		cm,mdss-livedisplay-cabc-cmd = [
 			15 01 00 00 00 00 02 55 00];
