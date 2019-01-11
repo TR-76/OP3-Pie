@@ -630,9 +630,11 @@ static ssize_t store_##file_name					\
 	    || new_policy.max < new_policy.user_policy.min)		\
 		return -EINVAL;						\
 									\
-	policy->user_policy.object = new_policy.object;			\
 									\
+		policy->user_policy.min = new_policy.min;			\
+	policy->user_policy.max = new_policy.max;			\
 	ret = cpufreq_set_policy(policy, &new_policy);			\
+	policy->user_policy.object = new_policy.object;			\
 	if (ret)							\
 		pr_warn("User policy not enforced yet!\n");		\
 									\
