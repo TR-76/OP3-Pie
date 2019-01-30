@@ -34,7 +34,7 @@
 #include <trace/events/power.h>
 #ifdef CONFIG_STATE_NOTIFIER
 #include <linux/state_notifier.h>
-#define SCREEN_OFF_CEILING 1036800
+#define SCREEN_OFF_CEILING 729800
 #endif
 
 /**
