@@ -2867,6 +2867,12 @@
 		};
 	};
 
+	qcom,msm-thermal-simple {
+		compatible = "qcom,msm-thermal-simple";
+		qcom,thermal-vadc = <&pm8994_vadc>;
+		qcom,adc-channel = <117>; /* LR_MUX6_PU1_AMUX_THM3 */
+	};
+
 	qcom,bcl {
 		compatible = "qcom,bcl";
 		qcom,bcl-enable;
@@ -2914,8 +2920,8 @@
 		compatible = "qcom,apss-core-ea";
 		reg = <0x70000 0x1000>;
 		qcom,low-hyst-temp = <100>;
-		qcom,high-hyst-temp = <100>;
-		qcom,polling-interval = <50>;
+		qcom,high-hyst-temp = <5>;
+		qcom,polling-interval = <100>;
 
 		ea0: ea0 {
 			sensor = <&sensor_information4>;
