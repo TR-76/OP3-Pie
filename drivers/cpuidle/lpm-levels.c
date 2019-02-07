@@ -89,12 +89,12 @@ static bool lpm_prediction = true;
 module_param_named(lpm_prediction,
 	lpm_prediction, bool, S_IRUGO | S_IWUSR | S_IWGRP);
 
-static uint32_t ref_stddev = 100;
+static uint32_t ref_stddev = 500;
 module_param_named(
 	ref_stddev, ref_stddev, uint, S_IRUGO | S_IWUSR | S_IWGRP
 );
 
-static uint32_t tmr_add = 100;
+static uint32_t tmr_add = 1000;
 module_param_named(
 	tmr_add, tmr_add, uint, S_IRUGO | S_IWUSR | S_IWGRP
 );
