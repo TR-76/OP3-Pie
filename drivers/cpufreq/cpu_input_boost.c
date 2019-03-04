@@ -109,6 +109,9 @@ void cpu_input_boost_kick(void)
 	if (!b)
 		return;
 
+	if (!(get_boost_state(b) & SCREEN_AWAKE))
+		return;
+
 	queue_work(b->wq, &b->input_boost);
 }
 
@@ -134,19 +137,14 @@ static void __cpu_input_boost_kick_max(struct boost_drv *b,
 void cpu_input_boost_kick_max(unsigned int duration_ms)
 {
 	struct boost_drv *b = boost_drv_g;
-	u32 state;
 
 	if (!b)
 		return;
 
-	state = get_boost_state(b);
-
-	/* Don't mess with wake boosts */
-	if (state & WAKE_BOOST)
+	if (!(get_boost_state(b) & SCREEN_AWAKE))
 		return;
 
-	atomic_set(&b->max_boost_dur, duration_ms);
-	queue_work(b->wq, &b->max_boost);
+	__cpu_input_boost_kick_max(b, duration_ms);
 }
 
 static void input_boost_worker(struct work_struct *work)
