@@ -693,7 +693,7 @@ void sde_crtc_commit_kickoff(struct drm_crtc *crtc)
 	list_for_each_entry(encoder, &dev->mode_config.encoder_list, head) {
 		if (encoder->crtc != crtc)
 			continue;
-
+			 cpu_input_boost_kick();
 		/*
 		 * Encoder will flush/start now, unless it has a tx pending.
 		 * If so, it may delay and flush at an irq event (e.g. ppdone)
