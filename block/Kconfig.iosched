@@ -135,7 +135,6 @@ choice
 	config DEFAULT_NOOP
 		bool "No-op"
 
-<<<<<<< HEAD
 	config DEFAULT_SIO
 		bool "SIO" if IOSCHED_SIO=y
 
@@ -144,10 +143,8 @@ choice
 
 	config DEFAULT_ZEN
 		bool "ZEN" if IOSCHED_ZEN=y
-=======
 	config DEFAULT_TRIPNDROID
 		bool "TRIPNDROID" if IOSCHED_TRIPNDROID=y
->>>>>>> 13a097c5ca98... add tripndroid io
 
 endchoice
 
