@@ -1097,7 +1097,7 @@ static ssize_t synaptics_s1302_radd_write(struct file *file, const char __user *
             printk("reg=0x%x\n",reg[i]);
         }
     } else {
-        block = temp_block;
+    	    block = temp_block;
     }
     return count;
 }
